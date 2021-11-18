@@ -9,3 +9,7 @@ Repositorio de automatizacion del hospital
     1. PARA CREAR UNA NUEVA RAMA: git checkout -b <nombreUsuario>
     2. PARA CAMBIAR DE RAMA: git switch <nombreRama>
 3. Empezar a colaborar.
+
+# Participantes
+
+1. Diego Castro
