@@ -13,3 +13,4 @@ Repositorio de automatizacion del hospital
 # Participantes
 
 1. Diego Castro
+2. Domenica Munoz
