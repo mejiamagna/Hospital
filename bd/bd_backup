@@ -1,0 +1,1176 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2021-11-21 18:22:15 -05
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 210 (class 1259 OID 60299)
+-- Name: Administrador; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Administrador" (
+    id_administrador integer NOT NULL,
+    id_persona integer NOT NULL,
+    password text
+);
+
+
+ALTER TABLE public."Administrador" OWNER TO user_andres;
+
+--
+-- TOC entry 208 (class 1259 OID 60295)
+-- Name: Administrador_id_administrador_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Administrador_id_administrador_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Administrador_id_administrador_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3401 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: Administrador_id_administrador_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Administrador_id_administrador_seq" OWNED BY public."Administrador".id_administrador;
+
+
+--
+-- TOC entry 209 (class 1259 OID 60297)
+-- Name: Administrador_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Administrador_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Administrador_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3402 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: Administrador_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Administrador_id_persona_seq" OWNED BY public."Administrador".id_persona;
+
+
+--
+-- TOC entry 216 (class 1259 OID 60351)
+-- Name: Cita; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Cita" (
+    id_cita integer NOT NULL,
+    id_paciente integer NOT NULL,
+    fecha_cita date,
+    sintomatologia text,
+    estado_cita text,
+    comentario_cita text,
+    costo numeric(5,3),
+    id_medico_especialidad integer NOT NULL
+);
+
+
+ALTER TABLE public."Cita" OWNER TO user_andres;
+
+--
+-- TOC entry 214 (class 1259 OID 60343)
+-- Name: Cita_id_cita_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Cita_id_cita_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Cita_id_cita_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3403 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Cita_id_cita_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Cita_id_cita_seq" OWNED BY public."Cita".id_cita;
+
+
+--
+-- TOC entry 223 (class 1259 OID 60399)
+-- Name: Cita_id_medico_especialidad_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Cita_id_medico_especialidad_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Cita_id_medico_especialidad_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3404 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: Cita_id_medico_especialidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Cita_id_medico_especialidad_seq" OWNED BY public."Cita".id_medico_especialidad;
+
+
+--
+-- TOC entry 215 (class 1259 OID 60345)
+-- Name: Cita_id_paciente_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Cita_id_paciente_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Cita_id_paciente_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3405 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Cita_id_paciente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Cita_id_paciente_seq" OWNED BY public."Cita".id_paciente;
+
+
+--
+-- TOC entry 207 (class 1259 OID 60285)
+-- Name: Doctor; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Doctor" (
+    id_doctor integer NOT NULL,
+    id_persona integer NOT NULL,
+    password text
+);
+
+
+ALTER TABLE public."Doctor" OWNER TO user_andres;
+
+--
+-- TOC entry 222 (class 1259 OID 60380)
+-- Name: Doctor_Especialidad; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Doctor_Especialidad" (
+    id_doctor_especialidad integer NOT NULL,
+    id_doctor integer NOT NULL,
+    id_especialidad integer NOT NULL
+);
+
+
+ALTER TABLE public."Doctor_Especialidad" OWNER TO user_andres;
+
+--
+-- TOC entry 219 (class 1259 OID 60374)
+-- Name: Doctor_Especialidad_id_doctor_especialidad_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Doctor_Especialidad_id_doctor_especialidad_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Doctor_Especialidad_id_doctor_especialidad_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3406 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: Doctor_Especialidad_id_doctor_especialidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Doctor_Especialidad_id_doctor_especialidad_seq" OWNED BY public."Doctor_Especialidad".id_doctor_especialidad;
+
+
+--
+-- TOC entry 220 (class 1259 OID 60376)
+-- Name: Doctor_Especialidad_id_doctor_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Doctor_Especialidad_id_doctor_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Doctor_Especialidad_id_doctor_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3407 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: Doctor_Especialidad_id_doctor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Doctor_Especialidad_id_doctor_seq" OWNED BY public."Doctor_Especialidad".id_doctor;
+
+
+--
+-- TOC entry 221 (class 1259 OID 60378)
+-- Name: Doctor_Especialidad_id_especialidad_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Doctor_Especialidad_id_especialidad_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Doctor_Especialidad_id_especialidad_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3408 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: Doctor_Especialidad_id_especialidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Doctor_Especialidad_id_especialidad_seq" OWNED BY public."Doctor_Especialidad".id_especialidad;
+
+
+--
+-- TOC entry 205 (class 1259 OID 60281)
+-- Name: Doctor_id_doctor_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Doctor_id_doctor_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Doctor_id_doctor_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3409 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: Doctor_id_doctor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Doctor_id_doctor_seq" OWNED BY public."Doctor".id_doctor;
+
+
+--
+-- TOC entry 206 (class 1259 OID 60283)
+-- Name: Doctor_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Doctor_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Doctor_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3410 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: Doctor_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Doctor_id_persona_seq" OWNED BY public."Doctor".id_persona;
+
+
+--
+-- TOC entry 218 (class 1259 OID 60365)
+-- Name: Especialidad; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Especialidad" (
+    id_especialidad integer NOT NULL,
+    nombre_especialidad text,
+    descripcion_especialidad text
+);
+
+
+ALTER TABLE public."Especialidad" OWNER TO user_andres;
+
+--
+-- TOC entry 217 (class 1259 OID 60363)
+-- Name: Especialidad_id_especialidad_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Especialidad_id_especialidad_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Especialidad_id_especialidad_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3411 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: Especialidad_id_especialidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Especialidad_id_especialidad_seq" OWNED BY public."Especialidad".id_especialidad;
+
+
+--
+-- TOC entry 233 (class 1259 OID 60486)
+-- Name: Factura_Cabecera; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Factura_Cabecera" (
+    id_factura_cabecera integer NOT NULL,
+    id_factura_detalle integer NOT NULL,
+    id_persona integer NOT NULL,
+    fecha_factura date,
+    subtotal numeric(5,3),
+    "IVA" numeric(5,3),
+    descuento numeric(5,3),
+    total numeric(5,3)
+);
+
+
+ALTER TABLE public."Factura_Cabecera" OWNER TO user_andres;
+
+--
+-- TOC entry 230 (class 1259 OID 60480)
+-- Name: Factura_Cabecera_id_factura_cabecera_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Factura_Cabecera_id_factura_cabecera_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Factura_Cabecera_id_factura_cabecera_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3412 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: Factura_Cabecera_id_factura_cabecera_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Factura_Cabecera_id_factura_cabecera_seq" OWNED BY public."Factura_Cabecera".id_factura_cabecera;
+
+
+--
+-- TOC entry 231 (class 1259 OID 60482)
+-- Name: Factura_Cabecera_id_factura_detalle_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Factura_Cabecera_id_factura_detalle_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Factura_Cabecera_id_factura_detalle_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3413 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: Factura_Cabecera_id_factura_detalle_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Factura_Cabecera_id_factura_detalle_seq" OWNED BY public."Factura_Cabecera".id_factura_detalle;
+
+
+--
+-- TOC entry 232 (class 1259 OID 60484)
+-- Name: Factura_Cabecera_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Factura_Cabecera_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Factura_Cabecera_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3414 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: Factura_Cabecera_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Factura_Cabecera_id_persona_seq" OWNED BY public."Factura_Cabecera".id_persona;
+
+
+--
+-- TOC entry 229 (class 1259 OID 60456)
+-- Name: Factura_Detalle; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Factura_Detalle" (
+    id_factura_detalle integer NOT NULL,
+    id_cita integer NOT NULL,
+    subtotal numeric(5,3)
+);
+
+
+ALTER TABLE public."Factura_Detalle" OWNER TO user_andres;
+
+--
+-- TOC entry 228 (class 1259 OID 60454)
+-- Name: Factura_Detalle_id_cita_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Factura_Detalle_id_cita_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Factura_Detalle_id_cita_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3415 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: Factura_Detalle_id_cita_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Factura_Detalle_id_cita_seq" OWNED BY public."Factura_Detalle".id_cita;
+
+
+--
+-- TOC entry 227 (class 1259 OID 60452)
+-- Name: Factura_Detalle_id_factura_detalle_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Factura_Detalle_id_factura_detalle_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Factura_Detalle_id_factura_detalle_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3416 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: Factura_Detalle_id_factura_detalle_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Factura_Detalle_id_factura_detalle_seq" OWNED BY public."Factura_Detalle".id_factura_detalle;
+
+
+--
+-- TOC entry 226 (class 1259 OID 60423)
+-- Name: Historial; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Historial" (
+    id_historial integer NOT NULL,
+    id_cita integer NOT NULL,
+    receta text,
+    orden text
+);
+
+
+ALTER TABLE public."Historial" OWNER TO user_andres;
+
+--
+-- TOC entry 225 (class 1259 OID 60421)
+-- Name: Historial_id_cita_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Historial_id_cita_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Historial_id_cita_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3417 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: Historial_id_cita_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Historial_id_cita_seq" OWNED BY public."Historial".id_cita;
+
+
+--
+-- TOC entry 224 (class 1259 OID 60419)
+-- Name: Historial_id_historial_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Historial_id_historial_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Historial_id_historial_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3418 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: Historial_id_historial_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Historial_id_historial_seq" OWNED BY public."Historial".id_historial;
+
+
+--
+-- TOC entry 204 (class 1259 OID 60269)
+-- Name: Paciente; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Paciente" (
+    id_paciente integer NOT NULL,
+    id_persona integer NOT NULL,
+    enfermedades text,
+    password text
+);
+
+
+ALTER TABLE public."Paciente" OWNER TO user_andres;
+
+--
+-- TOC entry 202 (class 1259 OID 60265)
+-- Name: Paciente_id_paciente_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Paciente_id_paciente_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Paciente_id_paciente_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3419 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: Paciente_id_paciente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Paciente_id_paciente_seq" OWNED BY public."Paciente".id_paciente;
+
+
+--
+-- TOC entry 203 (class 1259 OID 60267)
+-- Name: Paciente_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Paciente_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Paciente_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3420 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: Paciente_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Paciente_id_persona_seq" OWNED BY public."Paciente".id_persona;
+
+
+--
+-- TOC entry 201 (class 1259 OID 60256)
+-- Name: Persona; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Persona" (
+    id_persona integer NOT NULL,
+    cedula text,
+    nombres text,
+    apellidos text,
+    direccion text,
+    telefono text,
+    correo text
+);
+
+
+ALTER TABLE public."Persona" OWNER TO user_andres;
+
+--
+-- TOC entry 200 (class 1259 OID 60254)
+-- Name: Persona_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Persona_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Persona_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3421 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: Persona_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Persona_id_persona_seq" OWNED BY public."Persona".id_persona;
+
+
+--
+-- TOC entry 213 (class 1259 OID 60311)
+-- Name: Secretaria; Type: TABLE; Schema: public; Owner: user_andres
+--
+
+CREATE TABLE public."Secretaria" (
+    id_secretaria integer NOT NULL,
+    id_persona integer NOT NULL,
+    anos_experiencia integer,
+    password text
+);
+
+
+ALTER TABLE public."Secretaria" OWNER TO user_andres;
+
+--
+-- TOC entry 212 (class 1259 OID 60309)
+-- Name: Secretaria_id_persona_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Secretaria_id_persona_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Secretaria_id_persona_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3422 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: Secretaria_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Secretaria_id_persona_seq" OWNED BY public."Secretaria".id_persona;
+
+
+--
+-- TOC entry 211 (class 1259 OID 60307)
+-- Name: Secretaria_id_secretaria_seq; Type: SEQUENCE; Schema: public; Owner: user_andres
+--
+
+CREATE SEQUENCE public."Secretaria_id_secretaria_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Secretaria_id_secretaria_seq" OWNER TO user_andres;
+
+--
+-- TOC entry 3423 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: Secretaria_id_secretaria_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user_andres
+--
+
+ALTER SEQUENCE public."Secretaria_id_secretaria_seq" OWNED BY public."Secretaria".id_secretaria;
+
+
+--
+-- TOC entry 3212 (class 2604 OID 60302)
+-- Name: Administrador id_administrador; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Administrador" ALTER COLUMN id_administrador SET DEFAULT nextval('public."Administrador_id_administrador_seq"'::regclass);
+
+
+--
+-- TOC entry 3213 (class 2604 OID 60303)
+-- Name: Administrador id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Administrador" ALTER COLUMN id_persona SET DEFAULT nextval('public."Administrador_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3216 (class 2604 OID 60354)
+-- Name: Cita id_cita; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita" ALTER COLUMN id_cita SET DEFAULT nextval('public."Cita_id_cita_seq"'::regclass);
+
+
+--
+-- TOC entry 3217 (class 2604 OID 60355)
+-- Name: Cita id_paciente; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita" ALTER COLUMN id_paciente SET DEFAULT nextval('public."Cita_id_paciente_seq"'::regclass);
+
+
+--
+-- TOC entry 3218 (class 2604 OID 60401)
+-- Name: Cita id_medico_especialidad; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita" ALTER COLUMN id_medico_especialidad SET DEFAULT nextval('public."Cita_id_medico_especialidad_seq"'::regclass);
+
+
+--
+-- TOC entry 3210 (class 2604 OID 60288)
+-- Name: Doctor id_doctor; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor" ALTER COLUMN id_doctor SET DEFAULT nextval('public."Doctor_id_doctor_seq"'::regclass);
+
+
+--
+-- TOC entry 3211 (class 2604 OID 60289)
+-- Name: Doctor id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor" ALTER COLUMN id_persona SET DEFAULT nextval('public."Doctor_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3220 (class 2604 OID 60383)
+-- Name: Doctor_Especialidad id_doctor_especialidad; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad" ALTER COLUMN id_doctor_especialidad SET DEFAULT nextval('public."Doctor_Especialidad_id_doctor_especialidad_seq"'::regclass);
+
+
+--
+-- TOC entry 3221 (class 2604 OID 60384)
+-- Name: Doctor_Especialidad id_doctor; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad" ALTER COLUMN id_doctor SET DEFAULT nextval('public."Doctor_Especialidad_id_doctor_seq"'::regclass);
+
+
+--
+-- TOC entry 3222 (class 2604 OID 60385)
+-- Name: Doctor_Especialidad id_especialidad; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad" ALTER COLUMN id_especialidad SET DEFAULT nextval('public."Doctor_Especialidad_id_especialidad_seq"'::regclass);
+
+
+--
+-- TOC entry 3219 (class 2604 OID 60368)
+-- Name: Especialidad id_especialidad; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Especialidad" ALTER COLUMN id_especialidad SET DEFAULT nextval('public."Especialidad_id_especialidad_seq"'::regclass);
+
+
+--
+-- TOC entry 3227 (class 2604 OID 60489)
+-- Name: Factura_Cabecera id_factura_cabecera; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera" ALTER COLUMN id_factura_cabecera SET DEFAULT nextval('public."Factura_Cabecera_id_factura_cabecera_seq"'::regclass);
+
+
+--
+-- TOC entry 3228 (class 2604 OID 60490)
+-- Name: Factura_Cabecera id_factura_detalle; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera" ALTER COLUMN id_factura_detalle SET DEFAULT nextval('public."Factura_Cabecera_id_factura_detalle_seq"'::regclass);
+
+
+--
+-- TOC entry 3229 (class 2604 OID 60491)
+-- Name: Factura_Cabecera id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera" ALTER COLUMN id_persona SET DEFAULT nextval('public."Factura_Cabecera_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3225 (class 2604 OID 60459)
+-- Name: Factura_Detalle id_factura_detalle; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Detalle" ALTER COLUMN id_factura_detalle SET DEFAULT nextval('public."Factura_Detalle_id_factura_detalle_seq"'::regclass);
+
+
+--
+-- TOC entry 3226 (class 2604 OID 60460)
+-- Name: Factura_Detalle id_cita; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Detalle" ALTER COLUMN id_cita SET DEFAULT nextval('public."Factura_Detalle_id_cita_seq"'::regclass);
+
+
+--
+-- TOC entry 3223 (class 2604 OID 60426)
+-- Name: Historial id_historial; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Historial" ALTER COLUMN id_historial SET DEFAULT nextval('public."Historial_id_historial_seq"'::regclass);
+
+
+--
+-- TOC entry 3224 (class 2604 OID 60427)
+-- Name: Historial id_cita; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Historial" ALTER COLUMN id_cita SET DEFAULT nextval('public."Historial_id_cita_seq"'::regclass);
+
+
+--
+-- TOC entry 3208 (class 2604 OID 60272)
+-- Name: Paciente id_paciente; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Paciente" ALTER COLUMN id_paciente SET DEFAULT nextval('public."Paciente_id_paciente_seq"'::regclass);
+
+
+--
+-- TOC entry 3209 (class 2604 OID 60273)
+-- Name: Paciente id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Paciente" ALTER COLUMN id_persona SET DEFAULT nextval('public."Paciente_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3207 (class 2604 OID 60259)
+-- Name: Persona id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Persona" ALTER COLUMN id_persona SET DEFAULT nextval('public."Persona_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3214 (class 2604 OID 60314)
+-- Name: Secretaria id_secretaria; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Secretaria" ALTER COLUMN id_secretaria SET DEFAULT nextval('public."Secretaria_id_secretaria_seq"'::regclass);
+
+
+--
+-- TOC entry 3215 (class 2604 OID 60315)
+-- Name: Secretaria id_persona; Type: DEFAULT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Secretaria" ALTER COLUMN id_persona SET DEFAULT nextval('public."Secretaria_id_persona_seq"'::regclass);
+
+
+--
+-- TOC entry 3239 (class 2606 OID 60337)
+-- Name: Administrador Administrador_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Administrador"
+    ADD CONSTRAINT "Administrador_pkey" PRIMARY KEY (id_administrador);
+
+
+--
+-- TOC entry 3231 (class 2606 OID 60280)
+-- Name: Persona Cedula_Unique; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Persona"
+    ADD CONSTRAINT "Cedula_Unique" UNIQUE (cedula);
+
+
+--
+-- TOC entry 3243 (class 2606 OID 60362)
+-- Name: Cita Cita_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita"
+    ADD CONSTRAINT "Cita_pkey" PRIMARY KEY (id_cita);
+
+
+--
+-- TOC entry 3247 (class 2606 OID 60387)
+-- Name: Doctor_Especialidad Doctor_Especialidad_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad"
+    ADD CONSTRAINT "Doctor_Especialidad_pkey" PRIMARY KEY (id_doctor_especialidad);
+
+
+--
+-- TOC entry 3237 (class 2606 OID 60294)
+-- Name: Doctor Doctor_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor"
+    ADD CONSTRAINT "Doctor_pkey" PRIMARY KEY (id_doctor);
+
+
+--
+-- TOC entry 3245 (class 2606 OID 60373)
+-- Name: Especialidad Especialidad_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Especialidad"
+    ADD CONSTRAINT "Especialidad_pkey" PRIMARY KEY (id_especialidad);
+
+
+--
+-- TOC entry 3253 (class 2606 OID 60493)
+-- Name: Factura_Cabecera Factura_Cabecera_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera"
+    ADD CONSTRAINT "Factura_Cabecera_pkey" PRIMARY KEY (id_factura_cabecera);
+
+
+--
+-- TOC entry 3251 (class 2606 OID 60479)
+-- Name: Factura_Detalle Factura_Detalle_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Detalle"
+    ADD CONSTRAINT "Factura_Detalle_pkey" PRIMARY KEY (id_factura_detalle);
+
+
+--
+-- TOC entry 3249 (class 2606 OID 60432)
+-- Name: Historial Historial_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Historial"
+    ADD CONSTRAINT "Historial_pkey" PRIMARY KEY (id_historial);
+
+
+--
+-- TOC entry 3235 (class 2606 OID 60278)
+-- Name: Paciente Paciente_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Paciente"
+    ADD CONSTRAINT "Paciente_pkey" PRIMARY KEY (id_paciente);
+
+
+--
+-- TOC entry 3233 (class 2606 OID 60264)
+-- Name: Persona Persona_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Persona"
+    ADD CONSTRAINT "Persona_pkey" PRIMARY KEY (id_persona);
+
+
+--
+-- TOC entry 3241 (class 2606 OID 60320)
+-- Name: Secretaria Secretaria_pkey; Type: CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Secretaria"
+    ADD CONSTRAINT "Secretaria_pkey" PRIMARY KEY (id_secretaria);
+
+
+--
+-- TOC entry 3258 (class 2606 OID 60409)
+-- Name: Cita id_cita_doctor; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita"
+    ADD CONSTRAINT id_cita_doctor FOREIGN KEY (id_medico_especialidad) REFERENCES public."Doctor_Especialidad"(id_doctor_especialidad) NOT VALID;
+
+
+--
+-- TOC entry 3259 (class 2606 OID 60414)
+-- Name: Cita id_cita_paciente; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Cita"
+    ADD CONSTRAINT id_cita_paciente FOREIGN KEY (id_paciente) REFERENCES public."Paciente"(id_paciente) NOT VALID;
+
+
+--
+-- TOC entry 3264 (class 2606 OID 60494)
+-- Name: Factura_Cabecera id_factura_cabecera_detalle; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera"
+    ADD CONSTRAINT id_factura_cabecera_detalle FOREIGN KEY (id_factura_detalle) REFERENCES public."Factura_Detalle"(id_factura_detalle);
+
+
+--
+-- TOC entry 3265 (class 2606 OID 60499)
+-- Name: Factura_Cabecera id_factura_cabecera_persona; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Cabecera"
+    ADD CONSTRAINT id_factura_cabecera_persona FOREIGN KEY (id_persona) REFERENCES public."Persona"(id_persona);
+
+
+--
+-- TOC entry 3263 (class 2606 OID 60461)
+-- Name: Factura_Detalle id_factura_detalle_cita; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Factura_Detalle"
+    ADD CONSTRAINT id_factura_detalle_cita FOREIGN KEY (id_cita) REFERENCES public."Cita"(id_cita);
+
+
+--
+-- TOC entry 3262 (class 2606 OID 60433)
+-- Name: Historial id_historial_cita; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Historial"
+    ADD CONSTRAINT id_historial_cita FOREIGN KEY (id_cita) REFERENCES public."Cita"(id_cita);
+
+
+--
+-- TOC entry 3261 (class 2606 OID 60393)
+-- Name: Doctor_Especialidad id_medico_especialidad_especialidad; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad"
+    ADD CONSTRAINT id_medico_especialidad_especialidad FOREIGN KEY (id_especialidad) REFERENCES public."Especialidad"(id_especialidad);
+
+
+--
+-- TOC entry 3260 (class 2606 OID 60388)
+-- Name: Doctor_Especialidad id_medico_especialidad_medico; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor_Especialidad"
+    ADD CONSTRAINT id_medico_especialidad_medico FOREIGN KEY (id_doctor) REFERENCES public."Doctor"(id_doctor);
+
+
+--
+-- TOC entry 3256 (class 2606 OID 60338)
+-- Name: Administrador id_persona_administrador; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Administrador"
+    ADD CONSTRAINT id_persona_administrador FOREIGN KEY (id_persona) REFERENCES public."Persona"(id_persona) NOT VALID;
+
+
+--
+-- TOC entry 3255 (class 2606 OID 60331)
+-- Name: Doctor id_persona_doctor; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Doctor"
+    ADD CONSTRAINT id_persona_doctor FOREIGN KEY (id_persona) REFERENCES public."Persona"(id_persona) NOT VALID;
+
+
+--
+-- TOC entry 3254 (class 2606 OID 60321)
+-- Name: Paciente id_persona_paciente; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Paciente"
+    ADD CONSTRAINT id_persona_paciente FOREIGN KEY (id_persona) REFERENCES public."Persona"(id_persona) NOT VALID;
+
+
+--
+-- TOC entry 3257 (class 2606 OID 60326)
+-- Name: Secretaria id_persona_secretaria; Type: FK CONSTRAINT; Schema: public; Owner: user_andres
+--
+
+ALTER TABLE ONLY public."Secretaria"
+    ADD CONSTRAINT id_persona_secretaria FOREIGN KEY (id_persona) REFERENCES public."Persona"(id_persona) NOT VALID;
+
+
+-- Completed on 2021-11-21 18:22:15 -05
+
+--
+-- PostgreSQL database dump complete
+--
+
