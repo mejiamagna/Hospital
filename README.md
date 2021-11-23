@@ -14,3 +14,4 @@ Repositorio de automatizacion del hospital
 
 1. Diego Castro
 2. Domenica Munoz
+3. Magna Mejia
