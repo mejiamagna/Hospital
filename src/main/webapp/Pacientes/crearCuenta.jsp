@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" media="screen" href="css/formularioRegistro.css" />
-<script type="text/javascript" src="js/login.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/formularioRegistro.css" />
+<script type="text/javascript" src="../js/login.js"></script>
 <title>Crear Cuenta</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
 		<input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su email" required/><br>
 		<p>Estoy de acuerdo con <a href="#">Terminos y condiciones</a></p>
 		<input class="botons" type="submit" value="Registrar" onclick="validar">
-		<p><a href="/Hospital/index.html">¿Ya tengo cuenta?</a></p>
+		<p><a href="../index.html">¿Ya tengo cuenta?</a></p>
 	</form>
 	
 </body>
