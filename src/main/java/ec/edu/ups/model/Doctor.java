@@ -10,9 +10,7 @@ public class Doctor implements Serializable{
 	private Persona idPersona;
 	private String Password;
 	
-	
-	
-	
+
 	public Doctor(int idDoctor, Persona idPersona, String password) {
 		super();
 		this.idDoctor = idDoctor;
