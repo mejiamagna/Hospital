@@ -169,8 +169,4 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, String> implements P
 		return administradores;
 	}
 
-	
-
-
-
 }

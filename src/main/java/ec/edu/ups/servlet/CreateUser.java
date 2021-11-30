@@ -15,7 +15,7 @@ import ec.edu.ups.model.Persona;
 /**
  * Servlet implementation class CreateSecretaria
  */
-@WebServlet("/Usuarios/CreateUser")
+@WebServlet("/CreateUser")
 public class CreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PersonaDAO personaDAO;
@@ -60,9 +60,11 @@ public class CreateUser extends HttpServlet {
 			
 			personaDAO.create(persona);
 			
-			url = "/index.html";
+			System.out.println(persona);
+			
+			url = "index.html";
 		} catch (Exception e) {
-			url = "/Pacientes/crearCuenta.jsp";
+			url = "/Usuarios/addUser.jsp";
 		}
 		
 		request.getRequestDispatcher(url).forward(request, response);
