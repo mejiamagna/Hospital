@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			if (persona.getPassword().equals(password) && persona.getCorreo().equals(email)) {
 				System.out.println("Paciente encontrado: " + persona.toString());
 				session.setAttribute("persona", persona);
-				getServletContext().getRequestDispatcher("/Public/homePaciente.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/admin/index.jsp").forward(request, response);
 			} else {
 				url = "/Public/error.jsp";
 			}

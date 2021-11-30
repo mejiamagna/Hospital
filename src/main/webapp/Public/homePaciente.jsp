@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Bienvenido</h1>
+	<h1>Bienvenido Administrador</h1>
+	
+	<a href="/Hospital/CerrarSesionServlet">Cerrar Sesion</a>
+	
+	
+	
 </body>
 </html>
