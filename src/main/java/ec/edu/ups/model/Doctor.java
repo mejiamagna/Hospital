@@ -6,25 +6,19 @@ public class Doctor implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 
-	private int idDoctor;
 	private Persona idPersona;
 	private String Password;
 	
 
-	public Doctor(int idDoctor, Persona idPersona, String password) {
+	public Doctor( Persona idPersona, String password) {
 		super();
-		this.idDoctor = idDoctor;
+		
 		this.idPersona = idPersona;
-		Password = password;
+		this.Password = password;
 	}
 	
 	
-	public int getIdDoctor() {
-		return idDoctor;
-	}
-	public void setIdDoctor(int idDoctor) {
-		this.idDoctor = idDoctor;
-	}
+
 	public Persona getIdPersona() {
 		return idPersona;
 	}
@@ -41,7 +35,7 @@ public class Doctor implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Doctor [idDoctor=" + idDoctor + ", idPersona=" + idPersona + ", Password=" + Password + "]";
+		return "Doctor [ idPersona=" + idPersona + ", Password=" + Password + "]";
 	}
 	
 	
