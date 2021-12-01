@@ -11,7 +11,7 @@ public class Cita implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idCitas;
 	//private	Paciente idPaciente;
-	//private Doctor idDoctor;
+	private Doctor idDoctor;
 	private LocalTime fechaCita;
 	private String Sintomatologia;
 	private String estadoCita;
