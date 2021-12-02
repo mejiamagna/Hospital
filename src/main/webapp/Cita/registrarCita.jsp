@@ -73,6 +73,8 @@
 			<option value="2">Ginecologia</option>
 			<option value="3">Cardiologia</option>
 			<option value="4">Odontología</option>
+			<option value="5">Pediatría</option>
+			<option value="6">Psicología</option>
 		</select placeholder= "" required>
 		<div id="medicoHelp" class="form-text">Seleccione la
 			especialidad</div>
