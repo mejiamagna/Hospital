@@ -1,5 +1,7 @@
 package ec.edu.ups.dao;
 
+import ec.edu.ups.model.Cita;
+
 public class CitaDAO {
 	/*
 	@Override
@@ -35,4 +37,8 @@ public class CitaDAO {
 		}
 		return listaPersonas;
 	}*/
+	public void guardarCita(String hola) {
+		System.out.println(hola+"hola cooki");
+		
+	}
 }
