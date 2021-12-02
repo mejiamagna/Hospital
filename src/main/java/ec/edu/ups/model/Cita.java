@@ -9,34 +9,20 @@ public class Cita implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idCitas;
+	private Integer idCitas;
 	//private	Paciente idPaciente;
-	//private Doctor idDoctor;
 	private LocalTime fechaCita;
 	private String Sintomatologia;
 	private String estadoCita;
 	private String comentarioCita;
-	private double costo;
-	//private MedicoEspecialidad medicoEspecialidad;
+	private Double costo;
 	
 	
-	public int getIdCitas() {
+	public Integer getIdCitas() {
 		return idCitas;
 	}
-	public void setIdCitas(int idCitas) {
+	public void setIdCitas(Integer idCitas) {
 		this.idCitas = idCitas;
-	}
-	public Paciente getIdPaciente() {
-		return idPaciente;
-	}
-	public void setIdPaciente(Paciente idPaciente) {
-		this.idPaciente = idPaciente;
-	}
-	public Doctor getIdDoctor() {
-		return idDoctor;
-	}
-	public void setIdDoctor(Doctor idDoctor) {
-		this.idDoctor = idDoctor;
 	}
 	public LocalTime getFechaCita() {
 		return fechaCita;
@@ -62,10 +48,10 @@ public class Cita implements Serializable {
 	public void setComentarioCita(String comentarioCita) {
 		this.comentarioCita = comentarioCita;
 	}
-	public double getCosto() {
+	public Double getCosto() {
 		return costo;
 	}
-	public void setCosto(double costo) {
+	public void setCosto(Double costo) {
 		this.costo = costo;
 	}
 	
